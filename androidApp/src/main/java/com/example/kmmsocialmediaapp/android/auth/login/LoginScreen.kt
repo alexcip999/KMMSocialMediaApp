@@ -29,6 +29,7 @@ import com.example.kmmsocialmediaapp.android.theming.ExtraLargeSpacing
 import com.example.kmmsocialmediaapp.android.theming.LargeSpacing
 import com.example.kmmsocialmediaapp.android.theming.MediumSpacing
 import com.example.kmmsocialmediaapp.android.theming.SocialAppTheme
+import com.ramcosta.composedestinations.annotation.Destination
 
 @Composable
 fun LoginScreen(

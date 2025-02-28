@@ -2,10 +2,11 @@ plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.kotlinAndroid)
     alias(libs.plugins.compose.compiler)
+    id("com.google.devtools.ksp") version "2.1.10-1.0.31"
 }
 android {
     namespace = "com.example.kmmsocialmediaapp.android"
-    compileSdk = 34
+    compileSdk = 35
     defaultConfig {
         applicationId = "com.example.kmmsocialmediaapp.android"
         minSdk = 24
@@ -33,6 +34,16 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+
+
+    applicationVariants.all {
+        kotlin.sourceSets {
+            getByName(name) {
+                kotlin.srcDir("build/generated/ksp/$name/kotlin")
+            }
+        }
+    }
+
 }
 
 dependencies {
@@ -43,8 +54,12 @@ dependencies {
     implementation(libs.androidx.activity.compose)
     debugImplementation(libs.compose.ui.tooling)
 
-    implementation("io.github.raamcosta.compose-destinations:core:1.8.38-beta")
+    implementation("io.github.raamcosta.compose-destinations:core:1.9.52")
+    ksp("io.github.raamcosta.compose-destinations:ksp:1.9.52")
 
+
+
+// V2 only: for bottom sheet destination support, also add
     implementation("androidx.core:core-splashscreen:1.0.0")
 
     implementation("androidx.datastore:datastore-preferences:1.0.0")
