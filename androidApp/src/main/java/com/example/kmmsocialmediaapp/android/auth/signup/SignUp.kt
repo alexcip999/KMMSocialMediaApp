@@ -1,6 +1,7 @@
 package com.example.kmmsocialmediaapp.android.auth.signup
 
 import androidx.compose.runtime.Composable
+import com.example.kmmsocialmediaapp.android.auth.destinations.LoginDestination
 import com.example.kmmsocialmediaapp.android.auth.login.LoginScreen
 import com.example.kmmsocialmediaapp.android.auth.login.LoginViewModel
 import com.ramcosta.composedestinations.annotation.Destination
@@ -19,6 +20,9 @@ fun SignUp(
         uiState = viewModel.uiState,
         onEmailChange = viewModel::updateEmail,
         onUsernameChange = viewModel::updateUsername,
-        onPasswordChange = viewModel::updatePassword
+        onPasswordChange = viewModel::updatePassword,
+        onNavigateToLogin = {
+            navigator.navigate(LoginDestination)
+        }
     )
 }

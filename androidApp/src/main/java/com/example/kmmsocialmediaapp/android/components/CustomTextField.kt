@@ -28,6 +28,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.example.kmmsocialmediaapp.android.R
 import com.example.kmmsocialmediaapp.android.theming.Gray
 import com.example.kmmsocialmediaapp.android.theming.SocialAppTheme
+import com.example.kmmsocialmediaapp.android.theming.appColors
 
 @Composable
 fun CustomTextField(
@@ -54,20 +55,10 @@ fun CustomTextField(
         ),
         singleLine = isSingleLine,
         colors = TextFieldDefaults.colors(
-            focusedContainerColor = if (isSystemInDarkTheme()) {
-                MaterialTheme.colorScheme.surface
-            } else {
-                Gray
-            },
-            unfocusedContainerColor = if (isSystemInDarkTheme()) {
-                MaterialTheme.colorScheme.surface
-            } else {
-                Gray
-            },
-            disabledContainerColor = Gray,
+            focusedContainerColor = MaterialTheme.appColors.surface,
+            unfocusedContainerColor = MaterialTheme.appColors.surface,
             focusedIndicatorColor = Color.Transparent,
             unfocusedIndicatorColor = Color.Transparent,
-            disabledIndicatorColor = Color.Transparent
         ),
         trailingIcon = if (isPasswordTextField){
             {

@@ -29,6 +29,7 @@ import com.example.kmmsocialmediaapp.android.theming.ExtraLargeSpacing
 import com.example.kmmsocialmediaapp.android.theming.LargeSpacing
 import com.example.kmmsocialmediaapp.android.theming.MediumSpacing
 import com.example.kmmsocialmediaapp.android.theming.SocialAppTheme
+import com.example.kmmsocialmediaapp.android.theming.appColors
 
 @Composable
 fun SignUpScreen(
@@ -36,7 +37,8 @@ fun SignUpScreen(
     uiState: SignUpUiState,
     onUsernameChange: (String) -> Unit,
     onEmailChange: (String) -> Unit,
-    onPasswordChange: (String) -> Unit
+    onPasswordChange: (String) -> Unit,
+    onNavigateToLogin: () -> Unit
 ){
     Column(
         modifier = Modifier
@@ -81,7 +83,7 @@ fun SignUpScreen(
 
         Button(
             onClick = {
-
+                onNavigateToLogin()
             },
             modifier = modifier
                 .fillMaxWidth()
@@ -89,7 +91,10 @@ fun SignUpScreen(
             elevation = ButtonDefaults.elevatedButtonElevation(
                 defaultElevation = 0.dp
             ),
-            shape = MaterialTheme.shapes.medium
+            shape = MaterialTheme.shapes.medium,
+            colors = ButtonDefaults.buttonColors(
+                containerColor = MaterialTheme.appColors.primary // Custom background color
+            )
         ){
             Text(text = stringResource(id = R.string.signup_button_hint), color = Color.White)
         }
@@ -105,7 +110,8 @@ fun SignUpScreenPreview(){
             uiState = SignUpUiState(),
             onUsernameChange = {},
             onEmailChange = {},
-            onPasswordChange = {}
+            onPasswordChange = {},
+            onNavigateToLogin = {}
         )
     }
 }

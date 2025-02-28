@@ -29,6 +29,7 @@ import com.example.kmmsocialmediaapp.android.theming.ExtraLargeSpacing
 import com.example.kmmsocialmediaapp.android.theming.LargeSpacing
 import com.example.kmmsocialmediaapp.android.theming.MediumSpacing
 import com.example.kmmsocialmediaapp.android.theming.SocialAppTheme
+import com.example.kmmsocialmediaapp.android.theming.appColors
 import com.ramcosta.composedestinations.annotation.Destination
 
 @Composable
@@ -84,7 +85,10 @@ fun LoginScreen(
             elevation = ButtonDefaults.elevatedButtonElevation(
                 defaultElevation = 0.dp
             ),
-            shape = MaterialTheme.shapes.medium
+            shape = MaterialTheme.shapes.medium,
+            colors = ButtonDefaults.buttonColors(
+                containerColor = MaterialTheme.appColors.primary // Custom background color
+            )
         ){
             Text(text = stringResource(id = R.string.login_button_label), color = Color.White)
         }
