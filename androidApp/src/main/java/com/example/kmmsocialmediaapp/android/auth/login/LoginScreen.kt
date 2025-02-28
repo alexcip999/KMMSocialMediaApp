@@ -1,4 +1,4 @@
-package com.example.kmmsocialmediaapp.android.auth.signup
+package com.example.kmmsocialmediaapp.android.auth.login
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.isSystemInDarkTheme
@@ -31,10 +31,9 @@ import com.example.kmmsocialmediaapp.android.theming.MediumSpacing
 import com.example.kmmsocialmediaapp.android.theming.SocialAppTheme
 
 @Composable
-fun SignUpScreen(
+fun LoginScreen(
     modifier: Modifier = Modifier,
-    uiState: SignUpUiState,
-    onUsernameChange: (String) -> Unit,
+    uiState: LoginUiState,
     onEmailChange: (String) -> Unit,
     onPasswordChange: (String) -> Unit
 ){
@@ -58,11 +57,6 @@ fun SignUpScreen(
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.spacedBy(LargeSpacing)
     ){
-        CustomTextField(
-            value = uiState.username,
-            onValueChange = onUsernameChange,
-            hint = R.string.username_hint
-        )
 
         CustomTextField(
             value = uiState.email,
@@ -91,7 +85,7 @@ fun SignUpScreen(
             ),
             shape = MaterialTheme.shapes.medium
         ){
-            Text(text = stringResource(id = R.string.signup_button_hint), color = Color.White)
+            Text(text = stringResource(id = R.string.login_button_label), color = Color.White)
         }
     }
 
@@ -101,32 +95,10 @@ fun SignUpScreen(
 @Composable
 fun SignUpScreenPreview(){
     SocialAppTheme {
-        SignUpScreen(
-            uiState = SignUpUiState(),
-            onUsernameChange = {},
+        LoginScreen(
+            uiState = LoginUiState(),
             onEmailChange = {},
             onPasswordChange = {}
         )
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
