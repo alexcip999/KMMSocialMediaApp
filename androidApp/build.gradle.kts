@@ -3,6 +3,7 @@ plugins {
     alias(libs.plugins.kotlinAndroid)
     alias(libs.plugins.compose.compiler)
     id("com.google.devtools.ksp") version "2.1.10-1.0.31"
+    id("kotlinx-serialization")
 }
 android {
     namespace = "com.example.kmmsocialmediaapp.android"
@@ -60,6 +61,8 @@ dependencies {
 
 
 // V2 only: for bottom sheet destination support, also add
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.0") // Replace with the desired version
+
     implementation("androidx.core:core-splashscreen:1.0.0")
 
     implementation("androidx.datastore:datastore-preferences:1.0.0")

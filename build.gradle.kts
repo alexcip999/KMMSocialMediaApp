@@ -5,6 +5,7 @@ plugins {
     alias(libs.plugins.kotlinAndroid).apply(false)
     alias(libs.plugins.kotlinMultiplatform).apply(false)
     alias(libs.plugins.compose.compiler).apply(false)
+    id("org.jetbrains.kotlin.plugin.serialization") version "2.1.10"
 }
 allprojects {
     repositories {

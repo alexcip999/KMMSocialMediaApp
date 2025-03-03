@@ -1,8 +1,11 @@
 package com.example.kmmsocialmediaapp.android.auth.signup
 
+import android.util.Log
+import android.widget.Toast
 import androidx.compose.foundation.background
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -12,12 +15,15 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
@@ -38,67 +44,94 @@ fun SignUpScreen(
     onUsernameChange: (String) -> Unit,
     onEmailChange: (String) -> Unit,
     onPasswordChange: (String) -> Unit,
-    onNavigateToLogin: () -> Unit
+    onNavigateToLogin: () -> Unit,
+    onNavigateToHome: () -> Unit,
+    onSignUpClick: () -> Unit
 ){
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .verticalScroll(rememberScrollState())
-            .background(
-                color = if (isSystemInDarkTheme()){
-                    MaterialTheme.colorScheme.background
-                } else {
-                    MaterialTheme.colorScheme.surface
-                }
-            )
-            .padding(
-                top = ExtraLargeSpacing + LargeSpacing,
-                start = LargeSpacing + MediumSpacing,
-                end = LargeSpacing + MediumSpacing,
-                bottom = LargeSpacing
-            ),
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.spacedBy(LargeSpacing)
+    val context = LocalContext.current
+
+    Box(
+        modifier = modifier.fillMaxSize(),
+        contentAlignment = Alignment.Center
     ){
-        CustomTextField(
-            value = uiState.username,
-            onValueChange = onUsernameChange,
-            hint = R.string.username_hint
-        )
-
-        CustomTextField(
-            value = uiState.email,
-            onValueChange = onEmailChange,
-            hint = R.string.email_hint,
-            keyboardType = KeyboardType.Email
-        )
-
-        CustomTextField(
-            value = uiState.password,
-            onValueChange = onPasswordChange,
-            hint = R.string.password_hint,
-            keyboardType = KeyboardType.Password,
-            isPasswordTextField = true
-        )
-
-        Button(
-            onClick = {
-                onNavigateToLogin()
-            },
-            modifier = modifier
-                .fillMaxWidth()
-                .height(ButtonHeight),
-            elevation = ButtonDefaults.elevatedButtonElevation(
-                defaultElevation = 0.dp
-            ),
-            shape = MaterialTheme.shapes.medium,
-            colors = ButtonDefaults.buttonColors(
-                containerColor = MaterialTheme.appColors.primary // Custom background color
-            )
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .verticalScroll(rememberScrollState())
+                .background(
+                    color = if (isSystemInDarkTheme()){
+                        MaterialTheme.colorScheme.background
+                    } else {
+                        MaterialTheme.colorScheme.surface
+                    }
+                )
+                .padding(
+                    top = ExtraLargeSpacing + LargeSpacing,
+                    start = LargeSpacing + MediumSpacing,
+                    end = LargeSpacing + MediumSpacing,
+                    bottom = LargeSpacing
+                ),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.spacedBy(LargeSpacing)
         ){
-            Text(text = stringResource(id = R.string.signup_button_hint), color = Color.White)
+            CustomTextField(
+                value = uiState.username,
+                onValueChange = onUsernameChange,
+                hint = R.string.username_hint
+            )
+
+            CustomTextField(
+                value = uiState.email,
+                onValueChange = onEmailChange,
+                hint = R.string.email_hint,
+                keyboardType = KeyboardType.Email
+            )
+
+            CustomTextField(
+                value = uiState.password,
+                onValueChange = onPasswordChange,
+                hint = R.string.password_hint,
+                keyboardType = KeyboardType.Password,
+                isPasswordTextField = true
+            )
+
+            Button(
+                onClick = {
+                    onSignUpClick()
+                },
+                modifier = modifier
+                    .fillMaxWidth()
+                    .height(ButtonHeight),
+                elevation = ButtonDefaults.elevatedButtonElevation(
+                    defaultElevation = 0.dp
+                ),
+                shape = MaterialTheme.shapes.medium,
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = MaterialTheme.appColors.primary // Custom background color
+                )
+            ){
+                Text(text = stringResource(id = R.string.signup_button_hint), color = Color.White)
+            }
+        }
+
+        if (uiState.isAuthenticating){
+            CircularProgressIndicator()
         }
     }
+
+    LaunchedEffect(
+        key1 = uiState.authenticationSucceed,
+        key2 = uiState.authErrorMessage,
+        block = {
+            if (uiState.authenticationSucceed){
+                onNavigateToHome()
+            }
+
+            if (uiState.authErrorMessage != null){
+                Log.d("Here", uiState.authErrorMessage.toString())
+                Toast.makeText(context, uiState.authErrorMessage, Toast.LENGTH_SHORT).show()
+            }
+    })
 
 }
 
@@ -111,7 +144,9 @@ fun SignUpScreenPreview(){
             onUsernameChange = {},
             onEmailChange = {},
             onPasswordChange = {},
-            onNavigateToLogin = {}
+            onNavigateToLogin = {},
+            onNavigateToHome = {},
+            onSignUpClick = {}
         )
     }
 }
