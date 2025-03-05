@@ -3,10 +3,12 @@ package com.example.kmmsocialmediaapp.android.auth.login
 import android.util.Log
 import android.widget.Toast
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -29,13 +31,14 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.kmmsocialmediaapp.android.R
-import com.example.kmmsocialmediaapp.android.components.CustomTextField
-import com.example.kmmsocialmediaapp.android.theming.ButtonHeight
-import com.example.kmmsocialmediaapp.android.theming.ExtraLargeSpacing
-import com.example.kmmsocialmediaapp.android.theming.LargeSpacing
-import com.example.kmmsocialmediaapp.android.theming.MediumSpacing
-import com.example.kmmsocialmediaapp.android.theming.SocialAppTheme
-import com.example.kmmsocialmediaapp.android.theming.appColors
+import com.example.kmmsocialmediaapp.android.common.components.CustomTextField
+import com.example.kmmsocialmediaapp.android.common.theming.ButtonHeight
+import com.example.kmmsocialmediaapp.android.common.theming.ExtraLargeSpacing
+import com.example.kmmsocialmediaapp.android.common.theming.LargeSpacing
+import com.example.kmmsocialmediaapp.android.common.theming.MediumSpacing
+import com.example.kmmsocialmediaapp.android.common.theming.SmallSpacing
+import com.example.kmmsocialmediaapp.android.common.theming.SocialAppTheme
+import com.example.kmmsocialmediaapp.android.common.theming.appColors
 import com.ramcosta.composedestinations.annotation.Destination
 
 @Composable
@@ -45,7 +48,8 @@ fun LoginScreen(
     onEmailChange: (String) -> Unit,
     onPasswordChange: (String) -> Unit,
     onNavigateToHome: () -> Unit,
-    onSignInClick: () -> Unit
+    onSignInClick: () -> Unit,
+    onNavigateToSignup: () -> Unit
 ){
     val context = LocalContext.current
 
@@ -106,6 +110,10 @@ fun LoginScreen(
             ){
                 Text(text = stringResource(id = R.string.login_button_label), color = Color.White)
             }
+
+            GoToSignUp {
+                onNavigateToSignup()
+            }
         }
 
         if (uiState.isAuthenticating){
@@ -128,6 +136,27 @@ fun LoginScreen(
 
 }
 
+@Composable
+fun GoToSignUp(
+    modifier: Modifier = Modifier,
+    onNavigateToSignup: () -> Unit
+){
+    Row(
+        modifier = modifier.fillMaxWidth(),
+        horizontalArrangement = Arrangement.spacedBy(
+            SmallSpacing
+        )
+    ){
+        Text(text = "Don't have an account?", style = MaterialTheme.typography.labelMedium)
+        Text(
+            text = "SignUp",
+            style = MaterialTheme.typography.labelMedium,
+            color = MaterialTheme.appColors.primary,
+            modifier = modifier.clickable { onNavigateToSignup() }
+        )
+    }
+}
+
 @Preview
 @Composable
 fun SignUpScreenPreview(){
@@ -137,7 +166,8 @@ fun SignUpScreenPreview(){
             onEmailChange = {},
             onPasswordChange = {},
             onNavigateToHome = {},
-            onSignInClick = {}
+            onSignInClick = {},
+            onNavigateToSignup = {}
         )
     }
 }

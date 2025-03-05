@@ -1,4 +1,4 @@
-package com.example.kmmsocialmediaapp.android.theming
+package com.example.kmmsocialmediaapp.android.common.theming
 
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.isSystemInDarkTheme

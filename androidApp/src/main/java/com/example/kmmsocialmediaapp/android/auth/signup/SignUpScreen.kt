@@ -3,10 +3,12 @@ package com.example.kmmsocialmediaapp.android.auth.signup
 import android.util.Log
 import android.widget.Toast
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -29,13 +31,14 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.kmmsocialmediaapp.android.R
-import com.example.kmmsocialmediaapp.android.components.CustomTextField
-import com.example.kmmsocialmediaapp.android.theming.ButtonHeight
-import com.example.kmmsocialmediaapp.android.theming.ExtraLargeSpacing
-import com.example.kmmsocialmediaapp.android.theming.LargeSpacing
-import com.example.kmmsocialmediaapp.android.theming.MediumSpacing
-import com.example.kmmsocialmediaapp.android.theming.SocialAppTheme
-import com.example.kmmsocialmediaapp.android.theming.appColors
+import com.example.kmmsocialmediaapp.android.common.components.CustomTextField
+import com.example.kmmsocialmediaapp.android.common.theming.ButtonHeight
+import com.example.kmmsocialmediaapp.android.common.theming.ExtraLargeSpacing
+import com.example.kmmsocialmediaapp.android.common.theming.LargeSpacing
+import com.example.kmmsocialmediaapp.android.common.theming.MediumSpacing
+import com.example.kmmsocialmediaapp.android.common.theming.SmallSpacing
+import com.example.kmmsocialmediaapp.android.common.theming.SocialAppTheme
+import com.example.kmmsocialmediaapp.android.common.theming.appColors
 
 @Composable
 fun SignUpScreen(
@@ -112,7 +115,13 @@ fun SignUpScreen(
             ){
                 Text(text = stringResource(id = R.string.signup_button_hint), color = Color.White)
             }
+
+            GoToLogin {
+                onNavigateToLogin()
+            }
         }
+
+
 
         if (uiState.isAuthenticating){
             CircularProgressIndicator()
@@ -133,6 +142,26 @@ fun SignUpScreen(
             }
     })
 
+}
+
+@Composable
+fun GoToLogin(
+    modifier: Modifier = Modifier,
+    onNavigateToLogin: () -> Unit
+) {
+    Row(
+        modifier = modifier, horizontalArrangement = Arrangement.spacedBy(
+            SmallSpacing
+        )
+    ) {
+        Text(text = "Have already an account?", style = MaterialTheme.typography.labelMedium)
+        Text(
+            text = "Login",
+            style = MaterialTheme.typography.labelMedium,
+            color = MaterialTheme.appColors.primary,
+            modifier = modifier.clickable { onNavigateToLogin() }
+        )
+    }
 }
 
 @Preview

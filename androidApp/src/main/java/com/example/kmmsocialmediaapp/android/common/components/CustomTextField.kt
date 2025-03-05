@@ -1,4 +1,4 @@
-package com.example.kmmsocialmediaapp.android.components
+package com.example.kmmsocialmediaapp.android.common.components
 
 import androidx.annotation.StringRes
 import androidx.compose.foundation.isSystemInDarkTheme
@@ -26,9 +26,9 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.kmmsocialmediaapp.android.R
-import com.example.kmmsocialmediaapp.android.theming.Gray
-import com.example.kmmsocialmediaapp.android.theming.SocialAppTheme
-import com.example.kmmsocialmediaapp.android.theming.appColors
+import com.example.kmmsocialmediaapp.android.common.theming.Gray
+import com.example.kmmsocialmediaapp.android.common.theming.SocialAppTheme
+import com.example.kmmsocialmediaapp.android.common.theming.appColors
 
 @Composable
 fun CustomTextField(
