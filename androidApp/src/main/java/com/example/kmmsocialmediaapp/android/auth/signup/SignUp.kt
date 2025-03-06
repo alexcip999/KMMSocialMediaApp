@@ -1,7 +1,7 @@
 package com.example.kmmsocialmediaapp.android.auth.signup
 
 import androidx.compose.runtime.Composable
-import com.example.kmmsocialmediaapp.android.destinations.HomeScreenDestination
+import com.example.kmmsocialmediaapp.android.destinations.HomeDestination
 import com.example.kmmsocialmediaapp.android.destinations.LoginDestination
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
@@ -23,7 +23,7 @@ fun SignUp(
             navigator.navigate(LoginDestination)
         },
         onNavigateToHome = {
-            navigator.navigate(HomeScreenDestination)
+            navigator.navigate(HomeDestination)
         },
         onSignUpClick = viewModel::signUp
     )

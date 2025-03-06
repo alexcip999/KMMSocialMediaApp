@@ -53,13 +53,13 @@ dependencies {
     implementation(libs.compose.ui.tooling.preview)
     implementation(libs.androidx.material3.v120)
     implementation(libs.androidx.activity.compose)
+    implementation(libs.androidx.material3.android)
     debugImplementation(libs.compose.ui.tooling)
 
     implementation("io.github.raamcosta.compose-destinations:core:1.9.52")
     ksp("io.github.raamcosta.compose-destinations:ksp:1.9.52")
 
-
-
+    implementation("androidx.compose.material3:material3:1.3.0-beta01")
 // V2 only: for bottom sheet destination support, also add
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.0") // Replace with the desired version
 
@@ -72,5 +72,9 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-runtime-compose:2.6.1")
 
     implementation("com.google.accompanist:accompanist-systemuicontroller:0.28.0")
+
+    implementation("io.coil-kt:coil-compose:2.7.0")
+
+    implementation("com.google.accompanist:accompanist-swiperefresh:0.31.1-alpha")
 
 }

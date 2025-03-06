@@ -15,11 +15,11 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavHostController
 import com.example.kmmsocialmediaapp.android.R
-import com.example.kmmsocialmediaapp.android.destinations.HomeScreenDestination
 import com.example.kmmsocialmediaapp.android.destinations.LoginDestination
 import com.example.kmmsocialmediaapp.android.destinations.SignUpDestination
 import com.example.kmmsocialmediaapp.android.common.theming.SmallElevation
 import com.example.kmmsocialmediaapp.android.common.theming.appColors
+import com.example.kmmsocialmediaapp.android.destinations.HomeDestination
 import com.ramcosta.composedestinations.utils.currentDestinationAsState
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -47,7 +47,7 @@ fun MyAppBar(
                 containerColor = MaterialTheme.appColors.surface
             ),
             actions = {
-                AnimatedVisibility(visible = currentDestination?.route == HomeScreenDestination.route){
+                AnimatedVisibility(visible = currentDestination?.route == HomeDestination.route){
                     IconButton(
                         onClick = { TODO() }
                     ){
@@ -78,7 +78,7 @@ private fun getAppBatTitle(currentDestinationRoute: String?): Int{
     return when (currentDestinationRoute){
         LoginDestination.route -> R.string.login_destination_title
         SignUpDestination.route -> R.string.signup_destination_title
-        HomeScreenDestination.route -> R.string.home_destination_title
+        HomeDestination.route -> R.string.home_destination_title
         else -> R.string.no_destination_title
     }
 }
@@ -86,7 +86,7 @@ private fun getAppBatTitle(currentDestinationRoute: String?): Int{
 private fun shouldShowNavigationIcon(currentDestinationRoute: String?): Boolean {
     return !(currentDestinationRoute == LoginDestination.route
             || currentDestinationRoute == SignUpDestination.route
-            || currentDestinationRoute == HomeScreenDestination.route
+            || currentDestinationRoute == HomeDestination.route
             || currentDestinationRoute == null
             )
 }

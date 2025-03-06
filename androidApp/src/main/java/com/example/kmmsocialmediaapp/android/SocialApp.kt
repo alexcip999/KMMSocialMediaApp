@@ -15,7 +15,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.rememberNavController
 import com.example.kmmsocialmediaapp.android.common.components.MyAppBar
 import com.example.kmmsocialmediaapp.android.common.theming.appColors
-import com.example.kmmsocialmediaapp.android.destinations.HomeScreenDestination
+import com.example.kmmsocialmediaapp.android.destinations.HomeDestination
 import com.example.kmmsocialmediaapp.android.destinations.LoginDestination
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import com.ramcosta.composedestinations.DestinationsNavHost
@@ -58,7 +58,7 @@ fun SocialApp(
     LaunchedEffect(key1 = token, block = {
         if(token != null && token.isEmpty()){
             navHostController.navigate(LoginDestination.route){
-                popUpTo(HomeScreenDestination.route){
+                popUpTo(HomeDestination.route){
                     inclusive = true
                 }
             }
