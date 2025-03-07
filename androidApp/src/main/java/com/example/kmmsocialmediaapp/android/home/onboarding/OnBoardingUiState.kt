@@ -1,6 +1,6 @@
 package com.example.kmmsocialmediaapp.android.home.onboarding
 
-import com.example.kmmsocialmediaapp.android.common.fake_data.FollowsUser
+import com.example.kmmsocialmediaapp.android.common.dummy_data.FollowsUser
 
 data class OnBoardingUiState(
     val isLoading: Boolean = false,

@@ -1,4 +1,4 @@
-package com.example.kmmsocialmediaapp.android.common.fake_data
+package com.example.kmmsocialmediaapp.android.common.dummy_data
 
 data class Post(
     val id: String,

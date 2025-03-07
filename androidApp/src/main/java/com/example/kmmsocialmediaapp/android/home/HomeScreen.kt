@@ -1,6 +1,5 @@
 package com.example.kmmsocialmediaapp.android.home
 
-import android.content.res.Configuration
 import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.lazy.LazyColumn
@@ -16,10 +15,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.kmmsocialmediaapp.android.common.components.PostListItem
-import com.example.kmmsocialmediaapp.android.common.fake_data.FollowsUser
-import com.example.kmmsocialmediaapp.android.common.fake_data.Post
-import com.example.kmmsocialmediaapp.android.common.fake_data.samplePosts
-import com.example.kmmsocialmediaapp.android.common.fake_data.sampleUsers
+import com.example.kmmsocialmediaapp.android.common.dummy_data.FollowsUser
+import com.example.kmmsocialmediaapp.android.common.dummy_data.Post
+import com.example.kmmsocialmediaapp.android.common.dummy_data.samplePosts
+import com.example.kmmsocialmediaapp.android.common.dummy_data.sampleUsers
 import com.example.kmmsocialmediaapp.android.common.theming.SocialAppTheme
 import com.example.kmmsocialmediaapp.android.common.theming.appColors
 import com.example.kmmsocialmediaapp.android.home.onboarding.OnBoardingSection

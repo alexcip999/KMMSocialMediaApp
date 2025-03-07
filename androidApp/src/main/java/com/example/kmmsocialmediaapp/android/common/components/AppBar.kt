@@ -20,7 +20,8 @@ import com.example.kmmsocialmediaapp.android.destinations.SignUpDestination
 import com.example.kmmsocialmediaapp.android.common.theming.SmallElevation
 import com.example.kmmsocialmediaapp.android.common.theming.appColors
 import com.example.kmmsocialmediaapp.android.destinations.HomeDestination
-//import com.example.kmmsocialmediaapp.android.destinations.PostDetailDestination
+import com.example.kmmsocialmediaapp.android.destinations.PostDetailDestination
+import com.example.kmmsocialmediaapp.android.destinations.ProfileDestination
 import com.ramcosta.composedestinations.utils.currentDestinationAsState
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -50,7 +51,7 @@ fun MyAppBar(
             actions = {
                 AnimatedVisibility(visible = currentDestination?.route == HomeDestination.route){
                     IconButton(
-                        onClick = { TODO() }
+                        onClick = { /*TODO*/ }
                     ){
                         Icon(
                             painter = painterResource(id = R.drawable.account_circle_icon),
@@ -80,7 +81,8 @@ private fun getAppBatTitle(currentDestinationRoute: String?): Int{
         LoginDestination.route -> R.string.login_destination_title
         SignUpDestination.route -> R.string.signup_destination_title
         HomeDestination.route -> R.string.home_destination_title
-        //PostDetailDestination.route -> R.string.post_detail_destination_title
+        PostDetailDestination.route -> R.string.post_detail_destination_title
+        ProfileDestination.route  -> R.string.profile_destination_title
         else -> R.string.no_destination_title
     }
 }

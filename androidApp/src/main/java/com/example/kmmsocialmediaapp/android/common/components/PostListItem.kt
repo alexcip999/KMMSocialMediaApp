@@ -33,9 +33,10 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import com.example.kmmsocialmediaapp.android.R
-import com.example.kmmsocialmediaapp.android.common.fake_data.Post
-import com.example.kmmsocialmediaapp.android.common.fake_data.samplePosts
+import com.example.kmmsocialmediaapp.android.common.dummy_data.Post
+import com.example.kmmsocialmediaapp.android.common.dummy_data.samplePosts
 import com.example.kmmsocialmediaapp.android.common.theming.DarkGray
+import com.example.kmmsocialmediaapp.android.common.theming.ExtraLargeSpacing
 import com.example.kmmsocialmediaapp.android.common.theming.LargeSpacing
 import com.example.kmmsocialmediaapp.android.common.theming.LightGray
 import com.example.kmmsocialmediaapp.android.common.theming.MediumSpacing
@@ -55,9 +56,9 @@ fun PostListItem(
     Column(
         modifier = modifier
             .fillMaxWidth()
-            .aspectRatio(ratio = 0.7f)
             .background(color = MaterialTheme.appColors.surface)
             .clickable { onPostClick(post) }
+            .padding(bottom = ExtraLargeSpacing)
     ) {
         PostItemHeader(
             name = post.authorName,

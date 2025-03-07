@@ -4,6 +4,7 @@ import androidx.datastore.core.DataStore
 import androidx.datastore.core.DataStoreFactory
 import androidx.datastore.dataStoreFile
 import com.example.kmmsocialmediaapp.android.MainActivityViewModel
+import com.example.kmmsocialmediaapp.android.account.profile.ProfileViewModel
 import com.example.kmmsocialmediaapp.android.auth.login.LoginViewModel
 import com.example.kmmsocialmediaapp.android.auth.signup.SignUpViewModel
 import com.example.kmmsocialmediaapp.android.common.datastore.UserSettingsSerializer
@@ -19,6 +20,7 @@ val appModule = module {
     viewModel { MainActivityViewModel(get()) }
     viewModel { HomeScreenViewModel() }
     viewModel { PostDetailScreenViewModel() }
+    viewModel { ProfileViewModel() }
 
     single {
         DataStoreFactory.create(

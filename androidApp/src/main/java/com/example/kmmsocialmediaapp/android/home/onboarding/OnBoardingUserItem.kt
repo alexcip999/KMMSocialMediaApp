@@ -24,8 +24,8 @@ import androidx.compose.ui.unit.dp
 import com.example.kmmsocialmediaapp.android.R
 import com.example.kmmsocialmediaapp.android.common.components.CircleImage
 import com.example.kmmsocialmediaapp.android.common.components.FollowsButton
-import com.example.kmmsocialmediaapp.android.common.fake_data.FollowsUser
-import com.example.kmmsocialmediaapp.android.common.fake_data.sampleUsers
+import com.example.kmmsocialmediaapp.android.common.dummy_data.FollowsUser
+import com.example.kmmsocialmediaapp.android.common.dummy_data.sampleUsers
 import com.example.kmmsocialmediaapp.android.common.theming.MediumSpacing
 import com.example.kmmsocialmediaapp.android.common.theming.SmallSpacing
 import com.example.kmmsocialmediaapp.android.common.theming.SocialAppTheme

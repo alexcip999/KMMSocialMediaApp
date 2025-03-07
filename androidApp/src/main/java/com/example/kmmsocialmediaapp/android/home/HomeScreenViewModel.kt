@@ -5,9 +5,9 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.kmmsocialmediaapp.android.common.fake_data.Post
-import com.example.kmmsocialmediaapp.android.common.fake_data.samplePosts
-import com.example.kmmsocialmediaapp.android.common.fake_data.sampleUsers
+import com.example.kmmsocialmediaapp.android.common.dummy_data.Post
+import com.example.kmmsocialmediaapp.android.common.dummy_data.samplePosts
+import com.example.kmmsocialmediaapp.android.common.dummy_data.sampleUsers
 import com.example.kmmsocialmediaapp.android.home.onboarding.OnBoardingUiState
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch

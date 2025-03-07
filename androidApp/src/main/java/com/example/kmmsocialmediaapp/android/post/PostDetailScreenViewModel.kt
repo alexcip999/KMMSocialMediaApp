@@ -5,11 +5,10 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.kmmsocialmediaapp.android.common.fake_data.Comment
-import com.example.kmmsocialmediaapp.android.common.fake_data.Post
-import com.example.kmmsocialmediaapp.android.common.fake_data.sampleComments
-import com.example.kmmsocialmediaapp.android.common.fake_data.samplePosts
-import kotlinx.coroutines.delay
+import com.example.kmmsocialmediaapp.android.common.dummy_data.Comment
+import com.example.kmmsocialmediaapp.android.common.dummy_data.Post
+import com.example.kmmsocialmediaapp.android.common.dummy_data.sampleComments
+import com.example.kmmsocialmediaapp.android.common.dummy_data.samplePosts
 import kotlinx.coroutines.launch
 
 class PostDetailScreenViewModel: ViewModel() {
@@ -22,15 +21,15 @@ class PostDetailScreenViewModel: ViewModel() {
 
     fun fetchData(postId: String){
         viewModelScope.launch {
-            postUiState = postUiState.copy(
-                isLoading = true
-            )
-
-            commentsUiState = commentsUiState.copy(
-                isLoading = true
-            )
-
-            delay(500)
+//            postUiState = postUiState.copy(
+//                isLoading = true
+//            )
+//
+//            commentsUiState = commentsUiState.copy(
+//                isLoading = true
+//            )
+//
+//            delay(500)
 
             postUiState = postUiState.copy(
                 isLoading = false,

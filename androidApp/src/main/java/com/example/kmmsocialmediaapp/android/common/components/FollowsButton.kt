@@ -30,7 +30,9 @@ fun FollowsButton(
                 containerColor = MaterialTheme.appColors.primary
             )
         }else{
-            ButtonDefaults.buttonColors()
+            ButtonDefaults.buttonColors(
+                containerColor = MaterialTheme.appColors.primary
+            )
         },
         elevation = ButtonDefaults.elevatedButtonElevation(
             defaultElevation = 0.dp

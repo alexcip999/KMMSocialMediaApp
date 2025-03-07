@@ -1,6 +1,5 @@
 package com.example.kmmsocialmediaapp.android.home.onboarding
 
-import android.content.res.Configuration
 import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -23,8 +22,8 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.kmmsocialmediaapp.android.R
-import com.example.kmmsocialmediaapp.android.common.fake_data.FollowsUser
-import com.example.kmmsocialmediaapp.android.common.fake_data.sampleUsers
+import com.example.kmmsocialmediaapp.android.common.dummy_data.FollowsUser
+import com.example.kmmsocialmediaapp.android.common.dummy_data.sampleUsers
 import com.example.kmmsocialmediaapp.android.common.theming.LargeSpacing
 import com.example.kmmsocialmediaapp.android.common.theming.MediumSpacing
 import com.example.kmmsocialmediaapp.android.common.theming.SocialAppTheme
