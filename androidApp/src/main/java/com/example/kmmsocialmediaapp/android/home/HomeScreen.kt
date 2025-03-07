@@ -9,6 +9,7 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.pulltorefresh.PullToRefreshBox
+import androidx.compose.material3.pulltorefresh.PullToRefreshDefaults
 import androidx.compose.material3.pulltorefresh.rememberPullToRefreshState
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -74,11 +75,11 @@ fun HomeScreen(
             }
         }
 
-//        PullRefreshIndicator(
-//            refreshing = onBoardingUiState.isLoading && postsUiState.isLoading,
-//            state = pullRefreshState,
-//            modifier = modifier.align(Alignment.TopCenter)
-//        )
+        PullToRefreshDefaults.Indicator(
+            state = pullRefreshState,
+            isRefreshing = onBoardingUiState.isLoading && postsUiState.isLoading,
+            modifier = modifier.align(Alignment.TopCenter)
+        )
     }
 
 

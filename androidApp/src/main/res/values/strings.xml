@@ -40,4 +40,5 @@
     <string name="select_post_image_label">Post image:</string>
     <string name="onboarding_description">from people you follow will appear here.\nHere are some suggested people you can follow.</string>
     <string name="onboarding_done_button">Done</string>
+    <string name="common_header_label">Comments</string>
 </resources>

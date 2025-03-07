@@ -52,7 +52,6 @@ fun SocialApp(
             navGraph = NavGraphs.root,
             navController = navHostController
         )
-
     }
 
     LaunchedEffect(key1 = token, block = {

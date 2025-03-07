@@ -59,7 +59,7 @@ dependencies {
     implementation("io.github.raamcosta.compose-destinations:core:1.9.52")
     ksp("io.github.raamcosta.compose-destinations:ksp:1.9.52")
 
-    implementation("androidx.compose.material3:material3:1.3.0-beta01")
+    implementation("androidx.compose.material3:material3:1.3.0-beta04")
 // V2 only: for bottom sheet destination support, also add
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.0") // Replace with the desired version
 

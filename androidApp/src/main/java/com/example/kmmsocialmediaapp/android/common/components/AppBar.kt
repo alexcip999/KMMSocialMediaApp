@@ -20,6 +20,7 @@ import com.example.kmmsocialmediaapp.android.destinations.SignUpDestination
 import com.example.kmmsocialmediaapp.android.common.theming.SmallElevation
 import com.example.kmmsocialmediaapp.android.common.theming.appColors
 import com.example.kmmsocialmediaapp.android.destinations.HomeDestination
+//import com.example.kmmsocialmediaapp.android.destinations.PostDetailDestination
 import com.ramcosta.composedestinations.utils.currentDestinationAsState
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -79,6 +80,7 @@ private fun getAppBatTitle(currentDestinationRoute: String?): Int{
         LoginDestination.route -> R.string.login_destination_title
         SignUpDestination.route -> R.string.signup_destination_title
         HomeDestination.route -> R.string.home_destination_title
+        //PostDetailDestination.route -> R.string.post_detail_destination_title
         else -> R.string.no_destination_title
     }
 }
