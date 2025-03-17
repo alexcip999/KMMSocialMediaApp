@@ -4,6 +4,8 @@ import androidx.datastore.core.DataStore
 import androidx.datastore.core.DataStoreFactory
 import androidx.datastore.dataStoreFile
 import com.example.kmmsocialmediaapp.android.MainActivityViewModel
+import com.example.kmmsocialmediaapp.android.account.edit.EditProfileViewModel
+import com.example.kmmsocialmediaapp.android.account.follows.FollowsViewModel
 import com.example.kmmsocialmediaapp.android.account.profile.ProfileViewModel
 import com.example.kmmsocialmediaapp.android.auth.login.LoginViewModel
 import com.example.kmmsocialmediaapp.android.auth.signup.SignUpViewModel
@@ -21,6 +23,8 @@ val appModule = module {
     viewModel { HomeScreenViewModel() }
     viewModel { PostDetailScreenViewModel() }
     viewModel { ProfileViewModel() }
+    viewModel { EditProfileViewModel() }
+    viewModel { FollowsViewModel() }
 
     single {
         DataStoreFactory.create(

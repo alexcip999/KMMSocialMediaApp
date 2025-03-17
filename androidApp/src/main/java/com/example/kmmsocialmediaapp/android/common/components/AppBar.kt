@@ -19,6 +19,9 @@ import com.example.kmmsocialmediaapp.android.destinations.LoginDestination
 import com.example.kmmsocialmediaapp.android.destinations.SignUpDestination
 import com.example.kmmsocialmediaapp.android.common.theming.SmallElevation
 import com.example.kmmsocialmediaapp.android.common.theming.appColors
+import com.example.kmmsocialmediaapp.android.destinations.EditProfileDestination
+import com.example.kmmsocialmediaapp.android.destinations.FollowersDestination
+import com.example.kmmsocialmediaapp.android.destinations.FollowingDestination
 import com.example.kmmsocialmediaapp.android.destinations.HomeDestination
 import com.example.kmmsocialmediaapp.android.destinations.PostDetailDestination
 import com.example.kmmsocialmediaapp.android.destinations.ProfileDestination
@@ -83,6 +86,9 @@ private fun getAppBatTitle(currentDestinationRoute: String?): Int{
         HomeDestination.route -> R.string.home_destination_title
         PostDetailDestination.route -> R.string.post_detail_destination_title
         ProfileDestination.route  -> R.string.profile_destination_title
+        EditProfileDestination.route -> R.string.edit_profile_destination_title
+        FollowingDestination.route -> R.string.following_text
+        FollowersDestination.route -> R.string.followers_text
         else -> R.string.no_destination_title
     }
 }
@@ -91,6 +97,7 @@ private fun shouldShowNavigationIcon(currentDestinationRoute: String?): Boolean 
     return !(currentDestinationRoute == LoginDestination.route
             || currentDestinationRoute == SignUpDestination.route
             || currentDestinationRoute == HomeDestination.route
+            // || currentDestinationRoute == EditProfileDestination.route
             || currentDestinationRoute == null
             )
 }

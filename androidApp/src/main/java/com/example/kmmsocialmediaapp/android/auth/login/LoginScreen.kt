@@ -1,5 +1,7 @@
 package com.example.kmmsocialmediaapp.android.auth.login
 
+import android.content.res.Configuration
+import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import android.util.Log
 import android.widget.Toast
 import androidx.compose.foundation.background
@@ -147,7 +149,11 @@ fun GoToSignUp(
             SmallSpacing
         )
     ){
-        Text(text = "Don't have an account?", style = MaterialTheme.typography.labelMedium)
+        Text(
+            text = "Don't have an account?",
+            style = MaterialTheme.typography.labelMedium,
+            color = MaterialTheme.appColors.onSurface
+            )
         Text(
             text = "SignUp",
             style = MaterialTheme.typography.labelMedium,
@@ -157,9 +163,9 @@ fun GoToSignUp(
     }
 }
 
-@Preview
+@Preview(uiMode = UI_MODE_NIGHT_YES)
 @Composable
-fun SignUpScreenPreview(){
+fun LoginScreenPreview(){
     SocialAppTheme {
         LoginScreen(
             uiState = LoginUiState(),

@@ -21,10 +21,10 @@ fun Home(
             navigator.navigate(PostDetailDestination(it.id))
         },
         onProfileClick = { navigator.navigate(ProfileDestination(it))},
-        onLikeClick = { TODO() },
-        onCommentClick = { TODO() },
+        onLikeClick = { /*TODO*/ },
+        onCommentClick = { /*TODO*/ },
         onFollowBottonClick = { _, _ -> },
-        onBoardingFinish = { TODO() },
+        onBoardingFinish = { /*TODO*/ },
         fetchData = {
             viewModel.fetchData()
         }
