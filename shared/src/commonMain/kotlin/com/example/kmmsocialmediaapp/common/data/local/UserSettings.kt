@@ -1,4 +1,4 @@
-package com.example.kmmsocialmediaapp.android.common.datastore
+package com.example.kmmsocialmediaapp.common.data.local
 
 import com.example.kmmsocialmediaapp.auth.domain.model.AuthResultData
 import kotlinx.serialization.Serializable

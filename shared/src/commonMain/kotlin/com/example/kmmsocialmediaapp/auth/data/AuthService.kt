@@ -1,6 +1,6 @@
 package com.example.kmmsocialmediaapp.auth.data
 
-import com.example.kmmsocialmediaapp.common.data.KtorApi
+import com.example.kmmsocialmediaapp.common.data.remote.KtorApi
 import io.ktor.client.call.body
 import io.ktor.client.request.post
 import io.ktor.client.request.setBody

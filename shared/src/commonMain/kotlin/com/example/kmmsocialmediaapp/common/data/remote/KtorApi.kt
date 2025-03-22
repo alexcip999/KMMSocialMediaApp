@@ -1,4 +1,4 @@
-package com.example.kmmsocialmediaapp.common.data
+package com.example.kmmsocialmediaapp.common.data.remote
 
 import io.ktor.client.HttpClient
 import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
@@ -10,7 +10,7 @@ import io.ktor.http.takeFrom
 import io.ktor.serialization.kotlinx.json.json
 import kotlinx.serialization.json.Json
 
-private const val BASE_URL = "http://172.20.10.2:8080/"
+private const val BASE_URL = "http://192.168.0.107:8080/"
 
 internal abstract class KtorApi {
 

@@ -32,6 +32,7 @@ kotlin {
     val coroutinesVersion = "1.6.4"
     val koinVersion = "3.3.2"
     val ktorVersion = "2.2.1"
+    val datastoreVersion = "1.1.1"
 
     sourceSets {
 
@@ -43,6 +44,8 @@ kotlin {
                 implementation("io.ktor:ktor-serialization-kotlinx-json:$ktorVersion")
 
                 api("io.insert-koin:koin-core:$koinVersion")
+
+                implementation("androidx.datastore:datastore-preferences-core:$datastoreVersion")
             }
         }
 
@@ -56,6 +59,8 @@ kotlin {
             dependencies {
                 api("io.insert-koin:koin-android:$koinVersion")
                 implementation("io.ktor:ktor-client-android:$ktorVersion")
+
+                api("androidx.datastore:datastore-preferences:$datastoreVersion")
             }
         }
 

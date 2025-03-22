@@ -2,13 +2,16 @@ package com.example.kmmsocialmediaapp.auth.data
 
 import com.example.kmmsocialmediaapp.auth.domain.model.AuthResultData
 import com.example.kmmsocialmediaapp.auth.domain.repository.AuthRepository
+import com.example.kmmsocialmediaapp.common.data.local.UserPreferences
+import com.example.kmmsocialmediaapp.common.data.local.toUserSettings
 import com.example.kmmsocialmediaapp.common.util.DispatcherProvider
 import kotlinx.coroutines.withContext
 import com.example.kmmsocialmediaapp.common.util.Result
 
 internal class AuthRepositoryImpl(
     private val dispatcher: DispatcherProvider,
-    private val authService: AuthService
+    private val authService: AuthService,
+    private val userPreferences: UserPreferences
 ) : AuthRepository {
     override suspend fun signUp(
         name: String,
@@ -26,6 +29,9 @@ internal class AuthRepositoryImpl(
                         message = authResponse.errorMessage!!
                     )
                 } else {
+                    userPreferences.setUserData(
+                        authResponse.data.toAuthResultData().toUserSettings()
+                    )
                     Result.Success(
                         data = authResponse.data.toAuthResultData()
                     )
@@ -53,6 +59,9 @@ internal class AuthRepositoryImpl(
                         message = authResponse.errorMessage!!
                     )
                 } else {
+                    userPreferences.setUserData(
+                        authResponse.data.toAuthResultData().toUserSettings()
+                    )
                     Result.Success(
                         data = authResponse.data.toAuthResultData()
                     )
