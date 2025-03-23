@@ -46,6 +46,8 @@ kotlin {
                 api("io.insert-koin:koin-core:$koinVersion")
 
                 implementation("androidx.datastore:datastore-preferences-core:$datastoreVersion")
+
+                implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.6.0-RC.2")
             }
         }
 
