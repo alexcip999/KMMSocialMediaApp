@@ -68,7 +68,7 @@ internal class FollowsRepositoryImpl (
                 if (apiResponse.code == HttpStatusCode.OK){
                     Result.Success(data = apiResponse.data.success)
                 } else {
-                    Result.Error(data = false, message = "{${apiResponse.data.message}")
+                    Result.Error(data = false, message = "${apiResponse.data.message}")
                 }
             } catch (ioException: IOException){
                 Result.Error(message = Constants.NO_INTERNET_ERROR)

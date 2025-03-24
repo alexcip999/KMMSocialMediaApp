@@ -5,7 +5,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.kmmsocialmediaapp.android.common.dummy_data.FollowsUser
+import com.example.kmmsocialmediaapp.android.common.dummy_data.SampleFollowsUser
 import com.example.kmmsocialmediaapp.android.common.dummy_data.sampleUsers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -24,7 +24,7 @@ class FollowsViewModel: ViewModel(){
 
             uiState = uiState.copy(
                 isLoading = false,
-                followsUsers = sampleUsers
+                sampleFollowsUsers = sampleUsers
             )
         }
     }
@@ -32,6 +32,6 @@ class FollowsViewModel: ViewModel(){
 
 data class FollowsUiState(
     val isLoading: Boolean = false,
-    val followsUsers: List<FollowsUser> = listOf(),
+    val sampleFollowsUsers: List<SampleFollowsUser> = listOf(),
     val errorMessage: String? = null
 )

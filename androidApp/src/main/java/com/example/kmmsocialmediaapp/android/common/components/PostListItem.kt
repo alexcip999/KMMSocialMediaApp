@@ -33,7 +33,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import com.example.kmmsocialmediaapp.android.R
-import com.example.kmmsocialmediaapp.android.common.dummy_data.Post
+import com.example.kmmsocialmediaapp.android.common.dummy_data.SamplePost
 import com.example.kmmsocialmediaapp.android.common.dummy_data.samplePosts
 import com.example.kmmsocialmediaapp.android.common.theming.DarkGray
 import com.example.kmmsocialmediaapp.android.common.theming.ExtraLargeSpacing
@@ -46,11 +46,11 @@ import com.example.kmmsocialmediaapp.android.common.theming.appColors
 @Composable
 fun PostListItem(
     modifier: Modifier = Modifier,
-    post: Post,
-    onPostClick: (Post) -> Unit,
+    post: SamplePost,
+    onPostClick: (SamplePost) -> Unit,
     onProfileClick: (Int) -> Unit,
-    onLikeClick: () -> Unit,
-    onCommnetClick: () -> Unit,
+    onLikeClick: (SamplePost) -> Unit,
+    onCommnetClick: (SamplePost) -> Unit,
     isDetailScreen: Boolean = false
 ){
     Column(
@@ -84,8 +84,8 @@ fun PostListItem(
         PostLikesRow(
             likesCount = post.likesCount,
             commentsCount = post.commentCount,
-            onLikeClick = onLikeClick,
-            onCommnetClick = onCommnetClick
+            onLikeClick = { onLikeClick(post)},
+            onCommnetClick = {onCommnetClick(post)}
         )
 
         Text(

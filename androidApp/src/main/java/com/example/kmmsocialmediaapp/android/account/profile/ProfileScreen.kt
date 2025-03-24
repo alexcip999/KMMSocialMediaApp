@@ -1,6 +1,5 @@
 package com.example.kmmsocialmediaapp.android.account.profile
 
-import android.content.res.Configuration
 import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import androidx.annotation.StringRes
 import androidx.compose.foundation.background
@@ -39,7 +38,7 @@ import com.example.kmmsocialmediaapp.android.R
 import com.example.kmmsocialmediaapp.android.common.components.CircleImage
 import com.example.kmmsocialmediaapp.android.common.components.FollowsButton
 import com.example.kmmsocialmediaapp.android.common.components.PostListItem
-import com.example.kmmsocialmediaapp.android.common.dummy_data.Post
+import com.example.kmmsocialmediaapp.android.common.dummy_data.SamplePost
 import com.example.kmmsocialmediaapp.android.common.theming.LargeSpacing
 import com.example.kmmsocialmediaapp.android.common.theming.MediumSpacing
 import com.example.kmmsocialmediaapp.android.common.theming.SmallSpacing
@@ -54,7 +53,7 @@ fun ProfileScreen(
     onButtonClick: () -> Unit,
     onFollowersClick: () -> Unit,
     onFollowingClick: () -> Unit,
-    onPostClick: (Post) -> Unit,
+    onPostClick: (SamplePost) -> Unit,
     onLikeClick: () -> Unit,
     onCommentClick: () -> Unit,
     fetchData: () -> Unit
@@ -91,8 +90,8 @@ fun ProfileScreen(
                     post = it,
                     onPostClick = onPostClick,
                     onProfileClick = {},
-                    onLikeClick = onLikeClick,
-                    onCommnetClick = onCommentClick,
+                    onLikeClick = {},
+                    onCommnetClick = {},
                 )
             }
         }

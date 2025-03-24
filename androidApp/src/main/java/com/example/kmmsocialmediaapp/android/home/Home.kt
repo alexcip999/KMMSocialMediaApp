@@ -16,17 +16,10 @@ fun Home(
 
     HomeScreen(
         onBoardingUiState = viewModel.onBoardingUiState,
-        postsUiState = viewModel.postsUiState,
-        onPostClick = {
-            navigator.navigate(PostDetailDestination(it.id))
-        },
-        onProfileClick = { navigator.navigate(ProfileDestination(it))},
-        onLikeClick = { /*TODO*/ },
-        onCommentClick = { /*TODO*/ },
-        onFollowBottonClick = { _, _ -> },
-        onBoardingFinish = { /*TODO*/ },
-        fetchData = {
-            viewModel.fetchData()
-        }
+        postsFeedUiState = viewModel.postsFeedUiState,
+        homeRefreshState = viewModel.homeRefreshState,
+        onUiAction = { viewModel.onUiAction(it) },
+        onProfileNavigation = { navigator.navigate(ProfileDestination(it.toInt()))},
+        onPostDetailNavigation = { navigator.navigate(PostDetailDestination(it.id))},
     )
 }

@@ -22,12 +22,12 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.kmmsocialmediaapp.android.R
-import com.example.kmmsocialmediaapp.android.common.dummy_data.FollowsUser
 import com.example.kmmsocialmediaapp.android.common.dummy_data.sampleUsers
 import com.example.kmmsocialmediaapp.android.common.theming.LargeSpacing
 import com.example.kmmsocialmediaapp.android.common.theming.MediumSpacing
 import com.example.kmmsocialmediaapp.android.common.theming.SocialAppTheme
 import com.example.kmmsocialmediaapp.android.common.theming.appColors
+import com.example.kmmsocialmediaapp.common.domain.model.FollowsUser
 
 @Composable
 fun OnBoardingSection(
@@ -96,7 +96,7 @@ fun UsersRow(
         contentPadding = PaddingValues(horizontal = LargeSpacing),
         modifier = modifier
     ) {
-        items(items = users, key = {followUser -> followUser.id}){
+        items(items = users, key = {user -> user.id}){
             OnBoardingUserItem(
                 followsUser = it,
                 onUserClick = onUserClick,
@@ -115,7 +115,7 @@ private fun UserRowPreview(){
             color = MaterialTheme.appColors.background
         ) {
             UsersRow(
-                users = sampleUsers,
+                users = sampleUsers.map { it.toFollowUser() },
                 onUserClick = {},
                 onFollowButtonClick = { _, _ -> },
                 modifier = Modifier.padding(vertical = LargeSpacing)
@@ -132,7 +132,7 @@ private fun OnBoardindSectionPreview(){
             color = MaterialTheme.appColors.background
         ) {
             OnBoardingSection(
-                users = sampleUsers,
+                users = sampleUsers.map { it.toFollowUser() },
                 onUserClick = {},
                 onFollowButtonClick = { _, _ -> },
                 modifier = Modifier.padding(vertical = LargeSpacing),

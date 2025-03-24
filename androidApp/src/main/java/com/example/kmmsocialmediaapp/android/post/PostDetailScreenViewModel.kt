@@ -6,7 +6,7 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.kmmsocialmediaapp.android.common.dummy_data.Comment
-import com.example.kmmsocialmediaapp.android.common.dummy_data.Post
+import com.example.kmmsocialmediaapp.android.common.dummy_data.SamplePost
 import com.example.kmmsocialmediaapp.android.common.dummy_data.sampleComments
 import com.example.kmmsocialmediaapp.android.common.dummy_data.samplePosts
 import kotlinx.coroutines.launch
@@ -47,7 +47,7 @@ class PostDetailScreenViewModel: ViewModel() {
 
 data class PostUiState(
     val isLoading: Boolean = false,
-    val post: Post? = null,
+    val post: SamplePost? = null,
     val errorMessage: String? = null
 )
 

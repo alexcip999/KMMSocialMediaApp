@@ -5,7 +5,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.kmmsocialmediaapp.android.common.dummy_data.Post
+import com.example.kmmsocialmediaapp.android.common.dummy_data.SamplePost
 import com.example.kmmsocialmediaapp.android.common.dummy_data.Profile
 import com.example.kmmsocialmediaapp.android.common.dummy_data.samplePosts
 import com.example.kmmsocialmediaapp.android.common.dummy_data.sampleProfiles
@@ -46,7 +46,7 @@ data class UserInfoUiState(
 
 data class ProfilePostsUiState(
     val isLoading: Boolean = false,
-    val posts: List<Post> = listOf(),
+    val posts: List<SamplePost> = listOf(),
     var errorMessage: String? = null
 
 )

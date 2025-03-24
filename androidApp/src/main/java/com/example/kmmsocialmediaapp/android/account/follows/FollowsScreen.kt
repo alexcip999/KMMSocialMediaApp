@@ -26,7 +26,7 @@ fun FollowsScreen(
             modifier = modifier.fillMaxSize()
         ) {
             items(
-                items = uiState.followsUsers,
+                items = uiState.sampleFollowsUsers,
                 key = {user -> user.id}
             ){
                 FollowsListItem(
@@ -39,7 +39,7 @@ fun FollowsScreen(
             }
         }
 
-        if(uiState.isLoading && uiState.followsUsers.isEmpty()){
+        if(uiState.isLoading && uiState.sampleFollowsUsers.isEmpty()){
             CircularProgressIndicator()
         }
     }
