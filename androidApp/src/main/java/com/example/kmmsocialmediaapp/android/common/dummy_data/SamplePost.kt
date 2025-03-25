@@ -25,7 +25,7 @@ data class SamplePost(
             likesCount = likesCount,
             commentsCount = commentCount,
             userId = authorId.toLong(),
-            useName = authorName,
+            userName = authorName,
             userImageUrl = authorImage,
             isLiked = isLiked,
             isOwnPost = isOwnPost

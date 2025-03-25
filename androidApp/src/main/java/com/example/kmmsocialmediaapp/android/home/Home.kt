@@ -20,6 +20,6 @@ fun Home(
         homeRefreshState = viewModel.homeRefreshState,
         onUiAction = { viewModel.onUiAction(it) },
         onProfileNavigation = { navigator.navigate(ProfileDestination(it.toInt()))},
-        onPostDetailNavigation = { navigator.navigate(PostDetailDestination(it.id))},
+        onPostDetailNavigation = {} //navigator.navigate(PostDetailDestination(it.id))},
     )
 }

@@ -38,9 +38,6 @@ fun PostDetailScreen(
     modifier: Modifier = Modifier,
     postUiState: PostUiState,
     commentsUiState: CommentsUiState,
-    onCommentMoreIconClick: (Comment) -> Unit,
-    onProfileClick: (Int) -> Unit,
-    onAddCommentClick: () -> Unit,
     fetchData: () -> Unit
 ){
     if(postUiState.isLoading && commentsUiState.isLoading){
@@ -57,29 +54,28 @@ fun PostDetailScreen(
             ){
                 item(key = "post_item"){
                     PostListItem(
-                        post = postUiState.post,
+                        post = postUiState.post.toDomainPost(),
                         onPostClick = {},
-                        onProfileClick = onProfileClick,
-                        onLikeClick = { TODO() },
-                        onCommnetClick = { TODO() },
+                        onProfileClick = {},
+                        onLikeClick = {},
+                        onCommnetClick = {},
                         isDetailScreen = true
                     )
                 }
 
                 item(key = "comments_header"){
-                    CommentsSectionHeader {
-                        onAddCommentClick()
-                    }
+                    CommentsSectionHeader(
+                        onAddCommentClick = {}
+                    )
                 }
 
                 items(items = sampleComments, key = {comment -> comment.id}){
                     Divider()
                     CommentListItem(
                         comment = it,
-                        onProfileClick = onProfileClick
-                    ){
-                        onCommentMoreIconClick(it)
-                    }
+                        onProfileClick = {},
+                        onMoreIconClick = {},
+                    )
                 }
             }
         } else {
@@ -159,9 +155,6 @@ fun PostDetailPreview(){
                     isLoading = false,
                     comments = sampleComments
                 ),
-                onAddCommentClick = {},
-                onCommentMoreIconClick = {},
-                onProfileClick = {},
                 fetchData = {}
             )
 

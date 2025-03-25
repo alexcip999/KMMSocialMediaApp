@@ -1,6 +1,7 @@
 package com.example.kmmsocialmediaapp.android.common.components
 
 import android.content.res.Configuration
+import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.isSystemInDarkTheme
@@ -42,15 +43,17 @@ import com.example.kmmsocialmediaapp.android.common.theming.LightGray
 import com.example.kmmsocialmediaapp.android.common.theming.MediumSpacing
 import com.example.kmmsocialmediaapp.android.common.theming.SocialAppTheme
 import com.example.kmmsocialmediaapp.android.common.theming.appColors
+import com.example.kmmsocialmediaapp.android.common.util.toCurrentUrl
+import com.example.kmmsocialmediaapp.common.domain.model.Post
 
 @Composable
 fun PostListItem(
     modifier: Modifier = Modifier,
-    post: SamplePost,
-    onPostClick: (SamplePost) -> Unit,
-    onProfileClick: (Int) -> Unit,
-    onLikeClick: (SamplePost) -> Unit,
-    onCommnetClick: (SamplePost) -> Unit,
+    post: Post,
+    onPostClick: (Post) -> Unit,
+    onProfileClick: (userId: Long) -> Unit,
+    onLikeClick: (Post) -> Unit,
+    onCommnetClick: (Post) -> Unit,
     isDetailScreen: Boolean = false
 ){
     Column(
@@ -61,14 +64,14 @@ fun PostListItem(
             .padding(bottom = ExtraLargeSpacing)
     ) {
         PostItemHeader(
-            name = post.authorName,
-            profileUrl = post.authorImage,
+            name = post.userName,
+            profileUrl = post.userImageUrl,
             date = post.createdAt,
-            onProfileClick = { onProfileClick(post.authorId)}
+            onProfileClick = { onProfileClick(post.userId)}
         )
-
+        Log.d("image", post.imageUrl.toCurrentUrl())
         AsyncImage(
-            model = post.imageUrl,
+            model = post.imageUrl.toCurrentUrl(),
             contentDescription = null,
             modifier = modifier
                 .fillMaxWidth()
@@ -83,13 +86,13 @@ fun PostListItem(
 
         PostLikesRow(
             likesCount = post.likesCount,
-            commentsCount = post.commentCount,
+            commentsCount = post.commentsCount,
             onLikeClick = { onLikeClick(post)},
             onCommnetClick = {onCommnetClick(post)}
         )
 
         Text(
-            text = post.text,
+            text = post.caption,
             style = MaterialTheme.typography.bodyMedium,
             modifier = modifier.padding(horizontal = LargeSpacing),
             maxLines = if(isDetailScreen){
@@ -109,7 +112,7 @@ fun PostListItem(
 fun PostItemHeader(
     modifier: Modifier = Modifier,
     name: String,
-    profileUrl: String,
+    profileUrl: String?,
     date: String,
     onProfileClick: () -> Unit
 ){
@@ -124,7 +127,7 @@ fun PostItemHeader(
         horizontalArrangement = Arrangement.spacedBy(MediumSpacing)
     ){
         CircleImage(
-            imageUrl = profileUrl,
+            imageUrl = profileUrl?.toCurrentUrl(),
             modifier = modifier.size(30.dp)
         ){
             onProfileClick()
@@ -249,7 +252,7 @@ private fun PostListItemPreview(){
             color = MaterialTheme.appColors.surface
         ) {
             PostListItem(
-                post = samplePosts.first(),
+                post = samplePosts.first().toDomainPost(),
                 onPostClick = {},
                 onProfileClick = {},
                 onCommnetClick = {},

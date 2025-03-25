@@ -8,7 +8,7 @@ data class Post(
     val likesCount: Int,
     val commentsCount: Int,
     val userId: Long,
-    val useName: String,
+    val userName: String,
     val userImageUrl : String?,
     val isLiked: Boolean,
     val isOwnPost: Boolean

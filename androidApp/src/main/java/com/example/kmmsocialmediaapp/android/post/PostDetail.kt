@@ -16,9 +16,6 @@ fun PostDetail(
     PostDetailScreen(
         postUiState = viewModel.postUiState,
         commentsUiState = viewModel.commentsUiState,
-        onCommentMoreIconClick = {},
-        onProfileClick = {},
-        onAddCommentClick = { TODO() },
         fetchData = {viewModel.fetchData(postId)}
     )
 }

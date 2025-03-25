@@ -41,12 +41,11 @@ kotlin {
                 implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion")
                 implementation("io.ktor:ktor-client-core:$ktorVersion")
                 implementation("io.ktor:ktor-client-content-negotiation:$ktorVersion")
-                implementation("io.ktor:ktor-serialization-kotlinx-json:$ktorVersion")
+                api("io.ktor:ktor-serialization-kotlinx-json:$ktorVersion")
 
                 api("io.insert-koin:koin-core:$koinVersion")
 
                 implementation("androidx.datastore:datastore-preferences-core:$datastoreVersion")
-
                 implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.6.0-RC.2")
             }
         }

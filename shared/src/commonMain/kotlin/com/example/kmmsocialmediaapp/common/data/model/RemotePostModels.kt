@@ -28,7 +28,7 @@ internal data class RemotePost(
             likesCount = likesCount,
             commentsCount = commentsCount,
             userId = userId,
-            useName = userName,
+            userName = userName,
             userImageUrl = userImageUrl,
             isLiked = isLiked,
             isOwnPost = isOwnPost

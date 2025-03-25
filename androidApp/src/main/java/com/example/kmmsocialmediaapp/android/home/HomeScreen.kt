@@ -21,11 +21,11 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.kmmsocialmediaapp.android.R
 import com.example.kmmsocialmediaapp.android.common.components.PostListItem
-import com.example.kmmsocialmediaapp.android.common.dummy_data.SamplePost
 import com.example.kmmsocialmediaapp.android.common.theming.LargeSpacing
 import com.example.kmmsocialmediaapp.android.common.theming.SocialAppTheme
 import com.example.kmmsocialmediaapp.android.common.theming.appColors
 import com.example.kmmsocialmediaapp.android.home.onboarding.OnBoardingSection
+import com.example.kmmsocialmediaapp.common.domain.model.Post
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -36,7 +36,7 @@ fun HomeScreen(
     homeRefreshState: HomeRefreshState,
     onUiAction: (HomeUiAction) -> Unit,
     onProfileNavigation: (userId: Long) -> Unit,
-    onPostDetailNavigation: (SamplePost) -> Unit
+    onPostDetailNavigation: (Post) -> Unit
 ){
     val pullRefreshState = rememberPullToRefreshState()
 
@@ -76,12 +76,12 @@ fun HomeScreen(
                 }
             }
 
-            items(items = postsFeedUiState.posts, key = { post -> post.id}){ post ->
+            items(items = postsFeedUiState.posts, key = { post -> post.postId}){ post ->
                 PostListItem(
                     post = post,
                     onPostClick = { onPostDetailNavigation(it) },
-                    onProfileClick = { onProfileNavigation(it.toLong()) },
-                    onLikeClick = { onUiAction(HomeUiAction.PostLikeAction(it.toDomainPost()))},
+                    onProfileClick = { onProfileNavigation(it) },
+                    onLikeClick = { onUiAction(HomeUiAction.PostLikeAction(it))},
                     onCommnetClick = {onPostDetailNavigation(it)}
 
                 )

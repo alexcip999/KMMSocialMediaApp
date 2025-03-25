@@ -9,8 +9,8 @@ import com.example.kmmsocialmediaapp.common.util.DispatcherProvider
 import com.example.kmmsocialmediaapp.common.util.Result
 import com.example.kmmsocialmediaapp.post.domain.PostRepository
 import io.ktor.http.HttpStatusCode
+import io.ktor.utils.io.errors.IOException
 import kotlinx.coroutines.withContext
-import okio.IOException
 
 internal class PostRepositoryImpl (
     private val postApiService: PostApiService,

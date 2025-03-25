@@ -31,7 +31,7 @@ private val utilityModule = module {
 
 private val postModule = module {
     factory { PostApiService() }
-    factory { GetPostsUseCase() }
+    factory { GetPostsUseCase(get()) }
     factory { LikeOrUnlikePostUseCase() }
 
     single<PostRepository> { PostRepositoryImpl(get(), get(), get()) }

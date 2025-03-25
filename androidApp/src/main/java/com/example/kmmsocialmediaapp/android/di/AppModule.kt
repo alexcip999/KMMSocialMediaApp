@@ -19,7 +19,7 @@ val appModule = module {
     viewModel { LoginViewModel(get()) }
     viewModel { SignUpViewModel(get()) }
     viewModel { MainActivityViewModel(get()) }
-    viewModel { HomeScreenViewModel(get(), get()) }
+    viewModel { HomeScreenViewModel(get(), get(), get()) }
     viewModel { PostDetailScreenViewModel() }
     viewModel { ProfileViewModel() }
     viewModel { EditProfileViewModel() }

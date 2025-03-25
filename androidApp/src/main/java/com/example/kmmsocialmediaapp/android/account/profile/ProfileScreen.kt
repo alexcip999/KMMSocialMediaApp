@@ -44,6 +44,7 @@ import com.example.kmmsocialmediaapp.android.common.theming.MediumSpacing
 import com.example.kmmsocialmediaapp.android.common.theming.SmallSpacing
 import com.example.kmmsocialmediaapp.android.common.theming.SocialAppTheme
 import com.example.kmmsocialmediaapp.android.common.theming.appColors
+import com.example.kmmsocialmediaapp.common.domain.model.Post
 
 @Composable
 fun ProfileScreen(
@@ -53,7 +54,7 @@ fun ProfileScreen(
     onButtonClick: () -> Unit,
     onFollowersClick: () -> Unit,
     onFollowingClick: () -> Unit,
-    onPostClick: (SamplePost) -> Unit,
+    onPostClick: (Post) -> Unit,
     onLikeClick: () -> Unit,
     onCommentClick: () -> Unit,
     fetchData: () -> Unit
@@ -87,7 +88,7 @@ fun ProfileScreen(
                 key = {post -> post.id}
             ){
                 PostListItem(
-                    post = it,
+                    post = it.toDomainPost(),
                     onPostClick = onPostClick,
                     onProfileClick = {},
                     onLikeClick = {},

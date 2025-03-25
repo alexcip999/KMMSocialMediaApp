@@ -9,8 +9,8 @@ import com.example.kmmsocialmediaapp.common.util.DispatcherProvider
 import com.example.kmmsocialmediaapp.common.util.Result
 import com.example.kmmsocialmediaapp.follows.domain.FollowsRepository
 import io.ktor.http.HttpStatusCode
+import io.ktor.utils.io.errors.IOException
 import kotlinx.coroutines.withContext
-import okio.IOException
 
 internal class FollowsRepositoryImpl (
     private val followsApiService: FollowsApiService,
