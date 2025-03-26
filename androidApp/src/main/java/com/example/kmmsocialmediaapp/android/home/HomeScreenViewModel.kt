@@ -17,6 +17,7 @@ import com.example.kmmsocialmediaapp.common.util.Result
 import com.example.kmmsocialmediaapp.follows.domain.usecase.FollowOrUnfollowUseCase
 import com.example.kmmsocialmediaapp.follows.domain.usecase.GetFollowableUsersUseCase
 import com.example.kmmsocialmediaapp.post.domain.usecase.GetPostsUseCase
+import com.example.kmmsocialmediaapp.post.domain.usecase.LikeOrUnlikePostUseCase
 import kotlinx.coroutines.async
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -24,7 +25,8 @@ import kotlinx.coroutines.launch
 class HomeScreenViewModel(
     private val getFollowableUsersUseCase: GetFollowableUsersUseCase,
     private val followOrUnfollowUseCase : FollowOrUnfollowUseCase,
-    private val getPostsUseCase: GetPostsUseCase
+    private val getPostsUseCase: GetPostsUseCase,
+    private val likePostUseCase: LikeOrUnlikePostUseCase
 ) : ViewModel() {
 
     var postsFeedUiState by mutableStateOf(PostsFeedUiState())
@@ -103,6 +105,13 @@ class HomeScreenViewModel(
         )
     }
 
+    private fun loadMorePosts(){
+        if (postsFeedUiState.endReached) return
+        viewModelScope.launch {
+            pagingManager.loadItems()
+        }
+    }
+
     private fun handleOnBoardingResult(result: Result<List<FollowsUser>>){
         when(result) {
             is Result.Error -> Unit
@@ -165,11 +174,44 @@ class HomeScreenViewModel(
         }
     }
 
+    private fun likeOrUnlikePost(post: Post){
+        viewModelScope.launch {
+            val count = if (post.isLiked) -1 else +1
+            postsFeedUiState = postsFeedUiState.copy(
+                posts = postsFeedUiState.posts.map {
+                    if (it.postId == post.postId){
+                        it.copy(
+                            isLiked = !post.isLiked,
+                            likesCount = post.likesCount.plus(count)
+                        )
+                    } else it
+                }
+            )
+
+            val result = likePostUseCase(
+                post = post
+            )
+
+            when(result) {
+                is Result.Error -> {
+                    Log.d("Like", result.message.toString())
+                    postsFeedUiState = postsFeedUiState.copy(
+                        posts = postsFeedUiState.posts.map {
+                            if (it.postId == post.postId) post else it
+                        }
+                    )
+                }
+
+                is Result.Success -> Unit
+            }
+        }
+    }
+
     fun onUiAction(uiAction: HomeUiAction){
         when (uiAction) {
             is HomeUiAction.FollowUserAction -> followUser(uiAction.user)
-            HomeUiAction.LoadMorePostsAction -> Unit
-            is HomeUiAction.PostLikeAction -> Unit
+            HomeUiAction.LoadMorePostsAction -> loadMorePosts()
+            is HomeUiAction.PostLikeAction -> likeOrUnlikePost(uiAction.post)
             HomeUiAction.RefreshAction -> fetchData()
             HomeUiAction.RemoveOnboardingAction -> dimissOnboarding()
         }

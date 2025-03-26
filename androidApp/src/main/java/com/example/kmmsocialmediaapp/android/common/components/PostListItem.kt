@@ -25,6 +25,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color.Companion.Red
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
@@ -36,6 +37,7 @@ import coil.compose.AsyncImage
 import com.example.kmmsocialmediaapp.android.R
 import com.example.kmmsocialmediaapp.android.common.dummy_data.SamplePost
 import com.example.kmmsocialmediaapp.android.common.dummy_data.samplePosts
+import com.example.kmmsocialmediaapp.android.common.theming.Black54
 import com.example.kmmsocialmediaapp.android.common.theming.DarkGray
 import com.example.kmmsocialmediaapp.android.common.theming.ExtraLargeSpacing
 import com.example.kmmsocialmediaapp.android.common.theming.LargeSpacing
@@ -88,6 +90,7 @@ fun PostListItem(
             likesCount = post.likesCount,
             commentsCount = post.commentsCount,
             onLikeClick = { onLikeClick(post)},
+            isPostLiked = post.isLiked,
             onCommnetClick = {onCommnetClick(post)}
         )
 
@@ -185,6 +188,7 @@ fun PostLikesRow(
     likesCount: Int,
     commentsCount: Int,
     onCommnetClick: () -> Unit,
+    isPostLiked: Boolean,
     onLikeClick: () -> Unit
 ){
     Row(
@@ -198,12 +202,16 @@ fun PostLikesRow(
     ){
         IconButton(onClick = onLikeClick){
             Icon(
-                painter = painterResource(id = R.drawable.like_icon_outlined),
+                painter = if (isPostLiked) {
+                    painterResource(id = R.drawable.favorite_24dp_e8eaed_fill1_wght400_grad0_opsz24)
+                } else {
+                    painterResource(id = R.drawable.like_icon_outlined)
+                },
                 contentDescription = null,
-                tint = if(!isSystemInDarkTheme()){
-                    LightGray
+                tint = if(isPostLiked){
+                    Red
                 }else{
-                    DarkGray
+                    Black54
                 }
             )
         }
@@ -290,7 +298,8 @@ private fun PostLikesRowPreview(){
                 likesCount = 12,
                 commentsCount = 2,
                 onLikeClick = {},
-                onCommnetClick = {}
+                onCommnetClick = {},
+                isPostLiked = true
             )
         }
     }

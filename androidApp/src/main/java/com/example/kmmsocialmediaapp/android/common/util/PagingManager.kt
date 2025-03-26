@@ -1,6 +1,7 @@
 package com.example.kmmsocialmediaapp.android.common.util
 
 import com.example.kmmsocialmediaapp.common.util.Result
+import kotlinx.coroutines.delay
 
 interface PagingManager<Model>{
     suspend fun loadItems()
@@ -22,6 +23,7 @@ class DefaultPagingManager<Model>(
         if (isLoading) return
         isLoading = true
         onLoadStateChange(true)
+        delay(3000)
 
         val result = onRequest(currentPage)
         isLoading = false
