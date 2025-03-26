@@ -1,5 +1,9 @@
 package com.example.kmmsocialmediaapp.di
 
+import com.example.kmmsocialmediaapp.account.data.AccountApiService
+import com.example.kmmsocialmediaapp.account.data.repository.ProfileRepositoryImpl
+import com.example.kmmsocialmediaapp.account.domain.repository.ProfileRepository
+import com.example.kmmsocialmediaapp.account.domain.usecase.GetProfileUseCase
 import com.example.kmmsocialmediaapp.auth.data.AuthRepositoryImpl
 import com.example.kmmsocialmediaapp.auth.data.AuthService
 import com.example.kmmsocialmediaapp.auth.domain.repository.AuthRepository
@@ -45,10 +49,18 @@ private val followsModule = module {
     single<FollowsRepository> { FollowsRepositoryImpl(get(), get(), get()) }
 }
 
+private val accountModule = module {
+    factory { AccountApiService() }
+    factory { GetProfileUseCase() }
+    single<ProfileRepository> { ProfileRepositoryImpl(get(), get(), get()) }
+
+}
+
 fun getSharedModules() = listOf(
     platformModule,
     authModule,
     utilityModule,
     postModule,
-    followsModule
+    followsModule,
+    accountModule
 )

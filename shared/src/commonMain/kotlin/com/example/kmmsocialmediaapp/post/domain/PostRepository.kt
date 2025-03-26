@@ -8,4 +8,5 @@ interface PostRepository {
 
     suspend fun likeOrUnlikePost(postId: Long, shouldLike: Boolean): Result<Boolean>
 
+    suspend fun getUserPosts(userId: Long, page: Int, pageSize: Int): Result<List<Post>>
 }

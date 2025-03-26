@@ -1,7 +1,9 @@
 package com.example.kmmsocialmediaapp.post.data
 
 import com.example.kmmsocialmediaapp.common.data.local.UserPreferences
+import com.example.kmmsocialmediaapp.common.data.local.UserSettings
 import com.example.kmmsocialmediaapp.common.data.model.LikeParams
+import com.example.kmmsocialmediaapp.common.data.model.PostsApiResponse
 import com.example.kmmsocialmediaapp.common.data.remote.PostApiService
 import com.example.kmmsocialmediaapp.common.domain.model.Post
 import com.example.kmmsocialmediaapp.common.util.Constants
@@ -60,7 +62,7 @@ internal class PostRepositoryImpl (
                 val apiResponse = if (shouldLike){
                     postApiService.likePost(userData.token, likeParams)
                 } else {
-                    postApiService.unLikepost(userData.token, likeParams)
+                    postApiService.dislikepost(userData.token, likeParams)
                 }
 
                 if (apiResponse.code == HttpStatusCode.OK){
@@ -74,6 +76,44 @@ internal class PostRepositoryImpl (
                 Result.Error(
                     message = "${exception.message}"
                 )
+            }
+        }
+    }
+
+    override suspend fun getUserPosts(userId: Long, page: Int, pageSize: Int): Result<List<Post>> {
+        return fetchPosts(
+            apiCall = { currentUserData ->
+                postApiService.getUserPosts(
+                    token = currentUserData.token,
+                    userId = userId,
+                    currentUserId = currentUserData.id,
+                    page = page,
+                    pageSize = pageSize
+                )
+            }
+        )
+    }
+
+    private suspend fun fetchPosts(
+        apiCall: suspend (UserSettings) -> PostsApiResponse
+    ) : Result<List<Post>> {
+        return withContext(dispatcher.io){
+            try {
+                val currentUserData = userPreferences.getUserData()
+                val apiResponse = apiCall(currentUserData)
+
+                when (apiResponse.code) {
+                    HttpStatusCode.OK -> {
+                        Result.Success(data = apiResponse.data.posts.map { it.toDomainPost() })
+                    }
+                    else -> {
+                        Result.Error(message = Constants.UNEXPECTED_ERROR)
+                    }
+                }
+            } catch (ioException: IOException){
+                Result.Error(message = Constants.NO_INTERNET_ERROR)
+            } catch (exception: Throwable) {
+                Result.Error(message = "${exception.cause}")
             }
         }
     }
